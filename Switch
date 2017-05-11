@@ -5,9 +5,9 @@
 */
 
 // Define constant:
-const int analogPin = A0;    // 电位器引脚
-const int ledPin = 13;       // LED引脚
-const int threshold = 400;   // 模拟信号临界值
+const int analogPin = A0;    // 
+const int ledPin = 13;       // 
+const int threshold = 400;   // 
 
 char Location;
 
@@ -17,10 +17,10 @@ void setup() {
 }
 
 void loop() {
-  // 读取电位器值:
+  // 
   int analogValue = analogRead(analogPin);
 
-  // 模拟信号值是否超过临界:
+  // 
   if (analogValue > threshold) {
     digitalWrite(ledPin, HIGH);
   } else {
