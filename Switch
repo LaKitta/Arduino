@@ -1,0 +1,41 @@
+/*
+  If条件判断
+
+ 本例展示if()语句的使用。代码将读取电位器的值，如果超过临界值就把LED打开，否则就将LED关闭。程序会把电位器的值输出到电脑。
+
+ 电路搭建:
+ * 电位器中间引脚连接到A0。两侧的引脚分别连接到+5V和GND。
+ * LED连接13号引脚到GND
+
+ * 提示: 在大多数Arduino板上有13号引脚连接的板载LED，因此你一般不许要多加LED。
+
+代码公开。
+*/
+
+// 常量定义:
+const int analogPin = A0;    // 电位器引脚
+const int ledPin = 13;       // LED引脚
+const int threshold = 400;   // 模拟信号临界值
+
+void setup() {
+  // 初始化LED引脚为输出模式:
+  pinMode(ledPin, OUTPUT);
+  // 初始化串口通信:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // 读取电位器值:
+  int analogValue = analogRead(analogPin);
+
+  // 模拟信号值是否超过临界:
+  if (analogValue > threshold) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+
+  // 打印模拟信号值:
+  Serial.println(analogValue);
+  delay(1);        // 为了稳定性，延迟1毫秒
+}
